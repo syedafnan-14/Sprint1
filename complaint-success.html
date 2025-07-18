@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BijliSeva - Complaint Registered</title>
+  <link rel="stylesheet" href="home.css" />
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <span>BijliSeva</span>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="pay-bill.html" class="nav-link">Pay Bill</a></li>
+      <li class="nav-item"><a href="register-complaint.html" class="nav-link active">Register Complaint</a></li>
+      <li class="nav-item"><a href="complaint-status.html" class="nav-link">Complaint Status</a></li>
+    </ul>
+    <div class="user-info">
+      <span class="welcome">Welcome, Raj Sharma</span>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="success-container">
+      <div class="success-icon">✓</div>
+      <h2 class="success-title">Complaint Registered Successfully!</h2>
+      <p>Your complaint has been registered. Our team will contact you shortly.</p>
+
+      <div class="success-details">
+        <div class="detail-row">
+  <div class="detail-label">Complaint ID:</div>
+  <div class="detail-value complaint-id">#COMP202307151234</div>
+</div>
+<div class="detail-row">
+  <div class="detail-label">Complaint Type:</div>
+  <div class="detail-value type">Billing Related</div>
+</div>
+<div class="detail-row">
+  <div class="detail-label">Category:</div>
+  <div class="detail-value category">High Bill Amount</div>
+</div>
+<div class="detail-row">
+  <div class="detail-label">Contact Person:</div>
+  <div class="detail-value contact">Raj Sharma</div>
+</div>
+<div class="detail-row">
+  <div class="detail-label">Mobile Number:</div>
+  <div class="detail-value mobile">9876543210</div>
+</div>
+
+      </div>
+
+      <div style="margin-top: 30px;">
+        <a href="home.html" class="btn-action">Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+  window.onload = function () {
+    document.querySelector('.detail-value.complaint-id').textContent = '#' + (localStorage.getItem('complaintId') || 'COMP' + Date.now());
+    document.querySelector('.detail-value.type').textContent = localStorage.getItem('complaintType') || 'N/A';
+    document.querySelector('.detail-value.category').textContent = localStorage.getItem('complaintCategory') || 'N/A';
+    document.querySelector('.detail-value.contact').textContent = localStorage.getItem('complaintContact') || 'N/A';
+    document.querySelector('.detail-value.mobile').textContent = localStorage.getItem('complaintMobile') || 'N/A';
+  };
+</script>
+
+</body>
+</html>

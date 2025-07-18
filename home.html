@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BijliSeva - Home</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">⚡</span>
+            <span>BijliSeva</span>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="home.html" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a href="pay-bill.html" class="nav-link">Pay Bill</a></li>
+            <li class="nav-item"><a href="register-complaint.html" class="nav-link">Register Complaint</a></li>
+            <li class="nav-item"><a href="complaint-status.html" class="nav-link">Complaint Status</a></li>
+        </ul>
+        <div class="user-info">
+            <span class="welcome">Welcome, Raj Sharma</span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">Dashboard</h1>
+        
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">⚡</div>
+                    <h2 class="card-title">Current Consumption</h2>
+                </div>
+                <div class="card-content">
+                    <div class="stat-value">342 kWh</div>
+                    <div class="stat-label">This month's usage</div>
+                    <p>Your consumption is 15% lower than last month</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">💰</div>
+                    <h2 class="card-title">Billing Summary</h2>
+                </div>
+                <div class="card-content">
+                    <div class="stat-value">₹ 1,850</div>
+                    <div class="stat-label">Current bill amount</div>
+                    <p>Due date: 25th of this month</p>
+                    <a href="pay-bill.html" class="btn-action">Pay Bill Now</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🛠️</div>
+                    <h2 class="card-title">Complaint Status</h2>
+                </div>
+                <div class="card-content">
+                    <div class="stat-value">#COMP2023-187</div>
+                    <div class="stat-label">Status: In Progress</div>
+                    <p>Voltage fluctuation issue reported on 15th July</p>
+                    <a href="complaint-status.html" class="btn-action">View Details</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">💡</div>
+                    <h2 class="card-title">Energy Saving Tips</h2>
+                </div>
+                <div class="card-content">
+                    <p>Switch to LED bulbs to save up to 80% on lighting costs</p>
+                    <p>Use appliances during off-peak hours for better rates</p>
+                    <p>Unplug devices when not in use to avoid phantom load</p>
+                    <a href="#" class="btn-action">View More Tips</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script src="header.js"></script>
+</body>
+</html>

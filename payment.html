@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BijliSeva - Payment</title>
+  <link rel="stylesheet" href="home.css" />
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <span>BijliSeva</span>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="pay-bill.html" class="nav-link active">Pay Bill</a></li>
+      <li class="nav-item"><a href="register-complaint.html" class="nav-link">Register Complaint</a></li>
+      <li class="nav-item"><a href="complaint-status.html" class="nav-link">Complaint Status</a></li>
+    </ul>
+    <div class="user-info">
+      <span class="welcome">Welcome, Raj Sharma</span>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <h1 class="page-title">Make Payment</h1>
+
+    <div class="payment-form">
+      <div class="bill-summary">
+        <div class="summary-item">
+          <div class="summary-label">Bill Amount:</div>
+          <div class="summary-value" id="payment-bill-amount"></div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Late Payment Fee:</div>
+          <div class="summary-value" id="payment-late-fee"></div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">PG Charges:</div>
+          <div class="summary-value">15</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Total Payable:</div>
+          <div class="summary-value total-payable" id="payment-total-payable"></div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Payment Method</label>
+        <select class="form-control" id="payment-method">
+          <option value="">Select Payment Method</option>
+          <option value="credit">Credit Card</option>
+          <option value="debit">Debit Card</option>
+          <option value="netbanking">Net Banking</option>
+          <option value="upi">UPI</option>
+        </select>
+      </div>
+
+      <div id="card-details" style="display: none;">
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label class="form-label">Card Number</label>
+              <input type="text" class="form-control" id="card-number" placeholder="1234 5678 9012 3456" maxlength="16">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label class="form-label">Card Holder Name</label>
+              <input type="text" class="form-control" id="card-name" placeholder="Full Name">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-col">
+            <div class="form-group">
+              <label class="form-label">Expiry Date</label>
+              <input type="text" class="form-control" id="card-expiry" placeholder="MM/YY">
+            </div>
+          </div>
+          <div class="form-col">
+            <div class="form-group">
+              <label class="form-label">CVV</label>
+              <input type="text" class="form-control" id="card-cvv" placeholder="123" maxlength="3">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <a href="pay-bill.html" class="btn-secondary">Back to Bills</a>
+        <button class="btn-action" onclick="processPayment()">Pay Now</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+  window.onload = function() {
+    updateBillDetails();
+  };
+</script>
+
+</body>
+</html>

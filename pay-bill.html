@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BijliSeva - Pay Bill</title>
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">⚡</span>
+            <span>BijliSeva</span>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="pay-bill.html" class="nav-link active">Pay Bill</a></li>
+            <li class="nav-item"><a href="register-complaint.html" class="nav-link">Register Complaint</a></li>
+            <li class="nav-item"><a href="complaint-status.html" class="nav-link">Complaint Status</a></li>
+        </ul>
+        <div class="user-info">
+            <span class="welcome">Welcome, Raj Sharma</span>
+            <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">Pay Your Electricity Bill</h1>
+
+        <div class="bill-container">
+            <div class="bill-header">
+                <h2 class="bill-title">Outstanding Bills</h2>
+                <div class="bill-info">
+                    <div class="stat-label">Consumer ID: 1234567890123</div>
+                </div>
+            </div>
+
+            <div class="bill-list">
+                <div class="bill-item">
+                    <div class="bill-details">
+                        <div class="bill-period">July 2023</div>
+                        <div class="bill-amount">₹ 1,850</div>
+                        <div class="bill-due">Due Date: 25 July 2023</div>
+                    </div>
+                    <div class="bill-select">
+                        <input type="checkbox" id="bill1" class="bill-checkbox" onchange="calculateTotal()">
+                    </div>
+                </div>
+
+                <div class="bill-item">
+                    <div class="bill-details">
+                        <div class="bill-period">June 2023</div>
+                        <div class="bill-amount">₹ 2,150</div>
+                        <div class="bill-due">Due Date: 25 June 2023 (Overdue)</div>
+                    </div>
+                    <div class="bill-select">
+                        <input type="checkbox" id="bill2" class="bill-checkbox" onchange="calculateTotal()">
+                    </div>
+                </div>
+
+                <div class="bill-item">
+                    <div class="bill-details">
+                        <div class="bill-period">May 2023</div>
+                        <div class="bill-amount">₹ 1,980</div>
+                        <div class="bill-due">Due Date: 25 May 2023 (Overdue)</div>
+                    </div>
+                    <div class="bill-select">
+                        <input type="checkbox" id="bill3" class="bill-checkbox" onchange="calculateTotal()">
+                    </div>
+                </div>
+            </div>
+
+            <div class="bill-summary">
+                <div class="summary-item">
+                    <div class="summary-label">Total Bill Amount:</div>
+                    <div class="summary-value" id="bill-amount">₹ 0</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Late Payment Fee:</div>
+                    <div class="summary-value" id="late-fee">₹ 0</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">PG Charges:</div>
+                    <div class="summary-value">₹ 15</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-label">Total Payable:</div>
+                    <div class="summary-value total-payable" id="total-payable">₹ 0</div>
+                </div>
+            </div>
+
+            <div class="payment-actions">
+                <a href="home.html" class="btn-secondary">Back to Home</a>
+                <a href="payment.html" class="btn-action">Proceed to Payment</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BijliSeva - Payment Success</title>
+  <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <span>BijliSeva</span>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="pay-bill.html" class="nav-link active">Pay Bill</a></li>
+      <li class="nav-item"><a href="register-complaint.html" class="nav-link">Register Complaint</a></li>
+      <li class="nav-item"><a href="complaint-status.html" class="nav-link">Complaint Status</a></li>
+    </ul>
+    <div class="user-info">
+      <span class="welcome">Welcome, Raj Sharma</span>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="success-container">
+      <div class="success-icon">✓</div>
+      <h2 class="success-title">Payment Successful!</h2>
+      <p>Thank you for your payment. Your transaction has been completed successfully.</p>
+
+      <div class="success-details">
+  <div class="detail-row">
+  <div class="detail-label">Transaction ID:</div>
+  <div class="detail-value txn-id">...</div>
+</div>
+<div class="detail-row">
+  <div class="detail-label">Date & Time:</div>
+  <div class="detail-value date-time">...</div>
+</div>
+<div class="detail-row">
+  <div class="detail-label">Amount Paid:</div>
+  <div class="detail-value amount">...</div>
+</div>
+<div class="detail-row">
+  <div class="detail-label">Payment Method:</div>
+  <div class="detail-value method">...</div>
+</div>
+<div class="detail-row">
+  <div class="detail-label">Consumer ID:</div>
+  <div class="detail-value consumer">...</div>
+</div>
+
+      </div>
+
+      <a href="#" class="download-btn" onclick="downloadReceipt()">
+        <span class="download-icon">📥</span> Download Receipt
+      </a>
+
+      <div style="margin-top: 30px;">
+        <a href="home.html" class="btn-action">Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+  window.onload = function () {
+    // Load from localStorage
+    const amount = localStorage.getItem('totalPayable') || '0.00';
+    const method = localStorage.getItem('paymentMethod') || 'N/A';
+    const consumerId = localStorage.getItem('consumerId') || '1234567890123';
+    
+    // Transaction ID and Date
+    const transactionId = "TXN" + Date.now(); // Simple unique ID
+    const now = new Date();
+    const formattedDate = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+    const formattedTime = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+
+    // Update HTML
+    document.querySelector('.detail-value.txn-id').textContent = transactionId;
+    document.querySelector('.detail-value.date-time').textContent = `${formattedDate}, ${formattedTime}`;
+    document.querySelector('.detail-value.amount').textContent = `₹ ${amount}`;
+    document.querySelector('.detail-value.method').textContent = method;
+    document.querySelector('.detail-value.consumer').textContent = consumerId;
+
+    // Store transactionId in case it's needed elsewhere
+    localStorage.setItem('transactionId', transactionId);
+  };
+</script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BijliSeva - Complaint Status</title>
+  <link rel="stylesheet" href="home.css" />
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">⚡</span>
+      <span>BijliSeva</span>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="pay-bill.html" class="nav-link">Pay Bill</a></li>
+      <li class="nav-item"><a href="register-complaint.html" class="nav-link">Register Complaint</a></li>
+      <li class="nav-item"><a href="complaint-status.html" class="nav-link active">Complaint Status</a></li>
+    </ul>
+    <div class="user-info">
+      <span class="welcome">Welcome, Raj Sharma</span>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <h1 class="page-title">Complaint Status</h1>
+
+    <div class="bill-container">
+      <div class="bill-header">
+        <h2 class="bill-title">Your Complaints</h2>
+      </div>
+
+      <div class="bill-list">
+        <div class="bill-item">
+          <div class="bill-details">
+            <div class="bill-period">#COMP202307151234</div>
+            <div class="bill-amount">Billing Related</div>
+            <div class="bill-due">Status: <span style="color: #ff9f1c;">In Progress</span></div>
+            <p>High bill amount for June 2023</p>
+          </div>
+          <div class="bill-select">
+            <button class="btn-action" style="padding: 8px 15px;" onclick="viewComplaintDetails()">View</button>
+          </div>
+        </div>
+
+        <div class="bill-item">
+          <div class="bill-details">
+            <div class="bill-period">#COMP202306021587</div>
+            <div class="bill-amount">Voltage Related</div>
+            <div class="bill-due">Status: <span style="color: #28a745;">Resolved</span></div>
+            <p>Low voltage issue in the area</p>
+          </div>
+          <div class="bill-select">
+            <button class="btn-action" style="padding: 8px 15px;" onclick="viewComplaintDetails()">View</button>
+          </div>
+        </div>
+
+        <div class="bill-item">
+          <div class="bill-details">
+            <div class="bill-period">#COMP202305187654</div>
+            <div class="bill-amount">Meter Issue</div>
+            <div class="bill-due">Status: <span style="color: #28a745;">Resolved</span></div>
+            <p>Meter not working properly</p>
+          </div>
+          <div class="bill-select">
+            <button class="btn-action" style="padding: 8px 15px;" onclick="viewComplaintDetails()">View</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+  window.onload = function () {
+    const complaints = JSON.parse(localStorage.getItem("complaints") || "[]");
+    const listContainer = document.querySelector(".bill-list");
+    listContainer.innerHTML = ""; // Clear any hardcoded content
+
+    if (complaints.length === 0) {
+      listContainer.innerHTML = "<p style='padding: 20px;'>No complaints registered yet.</p>";
+      return;
+    }
+
+    complaints.reverse().forEach((comp) => {
+      const statusColor = comp.status === "Resolved" ? "#28a745" : "#ff9f1c";
+
+      const item = document.createElement("div");
+      item.className = "bill-item";
+      item.innerHTML = `
+        <div class="bill-details">
+          <div class="bill-period">#${comp.id}</div>
+          <div class="bill-amount">${comp.type}</div>
+          <div class="bill-due">Status: <span style="color: ${statusColor};">${comp.status}</span></div>
+          <p>${comp.description}</p>
+        </div>
+        <div class="bill-select">
+          <button class="btn-action" style="padding: 8px 15px;" onclick="alert('Complaint ID: #${comp.id}\\nType: ${comp.type}\\nStatus: ${comp.status}\\nDescription: ${comp.description}')">View</button>
+        </div>
+      `;
+      listContainer.appendChild(item);
+    });
+  };
+</script>
+
+</body>
+</html>
